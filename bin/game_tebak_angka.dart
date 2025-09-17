@@ -46,7 +46,7 @@ void tampilkanStatistik() {
   }
 }
 
-void _tanyakanMainLagi() {
+void tanyakanMainLagi() {
   print('\n' + '─' * 40);
   stdout.write('🔄 Main lagi? (y/n): ');
   String? jawaban = stdin.readLineSync()?.toLowerCase();
