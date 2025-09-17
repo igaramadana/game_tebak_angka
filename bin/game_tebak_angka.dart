@@ -34,3 +34,26 @@ void uiStatus() {
   }
   print('└─────────────────────────────────────');
 }
+
+int? mintaInputTebakan() {
+  stdout.write('🎯 Masukkan tebakan Anda (1-100): ');
+  String? input = stdin.readLineSync();
+
+  if (input == null || input.isEmpty) {
+    print('❌ Input tidak boleh kosong!');
+    return null;
+  }
+
+  int? tebakan = int.tryParse(input);
+  if (tebakan == null) {
+    print('❌ Harap masukkan angka yang valid!');
+    return null;
+  }
+
+  if (tebakan < 1 || tebakan > 100) {
+    print('❌ Angka harus antara 1 dan 100!');
+    return null;
+  }
+
+  return tebakan;
+}
