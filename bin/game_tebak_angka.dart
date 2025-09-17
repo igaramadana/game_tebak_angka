@@ -57,3 +57,22 @@ int? mintaInputTebakan() {
 
   return tebakan;
 }
+
+void beriPetunjuk(int tebakan) {
+  if (tebakan < angkaRahasia) {
+    print('📈 Terlalu rendah! Coba angka yang lebih tinggi.');
+  } else {
+    print('📉 Terlalu tinggi! Coba angka yang lebih rendah.');
+  }
+
+  int selisih = (tebakan - angkaRahasia).abs();
+  if (selisih <= 5) {
+    print('💡 Panas sekali! Hampir benar!');
+  } else if (selisih <= 15) {
+    print('💡 Panas! Mendekati...');
+  } else if (selisih <= 30) {
+    print('💡 Hangat...');
+  } else {
+    print('💡 Dingin... masih jauh.');
+  }
+}
