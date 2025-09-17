@@ -45,3 +45,17 @@ void tampilkanStatistik() {
     print('├─ Selisih tertinggi: $selisihTertinggi');
   }
 }
+
+void _tanyakanMainLagi() {
+  print('\n' + '─' * 40);
+  stdout.write('🔄 Main lagi? (y/n): ');
+  String? jawaban = stdin.readLineSync()?.toLowerCase();
+
+  if (jawaban == 'y' || jawaban == 'ya') {
+    print('\n' * 3);
+    GameTebakAngka().main();
+  } else {
+    print('\n🙏 Terima kasih sudah bermain!');
+    print('👋 Sampai jumpa lagi!');
+  }
+}
