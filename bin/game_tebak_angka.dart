@@ -11,6 +11,10 @@ class GameTebakAngka {
     : angkaRahasia = Random().nextInt(batasAtas) + 1,
       percobaan = 0,
       maxPercobaan = maksPercobaan;
+
+  void main() {
+    uiHeader();
+  }
 }
 
 void uiHeader() {
@@ -21,4 +25,12 @@ void uiHeader() {
   print('║               percobaan                  ║');
   print('╚══════════════════════════════════════════╝');
   print('');
+}
+
+void uiStatus() {
+  print('\n┌───[ Percobaan ${percobaan + 1}/$maksPercobaan ]───');
+  if (tebakanSebelumnya.isNotEmpty) {
+    print('├─ Tebakan sebelumnya: ${tebakanSebelumnya.join(', ')}');
+  }
+  print('└─────────────────────────────────────');
 }
