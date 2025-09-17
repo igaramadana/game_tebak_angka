@@ -34,3 +34,14 @@ void uiStatus() {
   }
   print('└─────────────────────────────────────');
 }
+
+void tampilkanStatistik() {
+  print('\n📊 STATISTIK PERMAINAN:');
+  print('├─ Total percobaan: $percobaan');
+  print('├─ Tebakan: ${tebakanSebelumnya.join(' → ')}');
+
+  if (tebakanSebelumnya.length > 1) {
+    int selisihTertinggi = hitungSelisihTertinggi();
+    print('├─ Selisih tertinggi: $selisihTertinggi');
+  }
+}
