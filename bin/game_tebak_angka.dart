@@ -12,3 +12,13 @@ class GameTebakAngka {
       percobaan = 0,
       maxPercobaan = maksPercobaan;
 }
+
+void uiHeader() {
+  print('╔══════════════════════════════════════════╗');
+  print('║    GAME TEBAK ANGKA BIAR GAK BORING      ║');
+  print('║          ====================            ║');
+  print('║  Tebak angka antara 1-100 dalam 10x      ║');
+  print('║               percobaan                  ║');
+  print('╚══════════════════════════════════════════╝');
+  print('');
+}
