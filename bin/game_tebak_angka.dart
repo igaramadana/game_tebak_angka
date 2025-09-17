@@ -14,7 +14,67 @@ class GameTebakAngka {
 
   void main() {
     uiHeader();
+    mainGame();
   }
+}
+
+void mainGame() {
+  bool menang = false;
+
+  while (percobaan < maksPercobaan && !menang) {
+    _tampilkanStatus();
+
+    int? tebakan = _mintaInputTebakan();
+    if (tebakan == null) continue;
+
+    tebakanSebelumnya.add(tebakan);
+    percobaan++;
+
+    if (tebakan == angkaRahasia) {
+      menang = true;
+      tampilkanKemenangan();
+    } else {
+      beriPetunjuk(tebakan);
+    }
+  }
+
+  if (!menang) {
+    tampilkanKekalahan();
+  }
+
+  tampilkanStatistik();
+  tanyakanMainLagi();
+}
+
+void _tampilkanStatus() {
+  print('\n┌───[ Percobaan ${percobaan + 1}/$maksPercobaan ]───');
+  if (tebakanSebelumnya.isNotEmpty) {
+    print('├─ Tebakan sebelumnya: ${tebakanSebelumnya.join(', ')}');
+  }
+  print('└─────────────────────────────────────');
+}
+
+int? _mintaInputTebakan() {
+  stdout.write('🎯 Masukkan tebakan Anda (1-100): ');
+  String? input = stdin.readLineSync();
+
+  if (input == null || input.isEmpty) {
+    print('❌ Input tidak boleh kosong!');
+    return null;
+  }
+
+  int? tebakan = int.tryParse(input);
+  if (tebakan == null) {
+    print('❌ Harap masukkan angka yang valid!');
+    return null;
+  }
+
+  if (tebakan < 1 || tebakan > 100) {
+    print('❌ Angka harus antara 1 dan 100!');
+    return null;
+  }
+
+  return tebakan;
 }
 
 void uiHeader() {
@@ -33,29 +93,4 @@ void uiStatus() {
     print('├─ Tebakan sebelumnya: ${tebakanSebelumnya.join(', ')}');
   }
   print('└─────────────────────────────────────');
-}
-
-void tampilkanStatistik() {
-  print('\n📊 STATISTIK PERMAINAN:');
-  print('├─ Total percobaan: $percobaan');
-  print('├─ Tebakan: ${tebakanSebelumnya.join(' → ')}');
-
-  if (tebakanSebelumnya.length > 1) {
-    int selisihTertinggi = hitungSelisihTertinggi();
-    print('├─ Selisih tertinggi: $selisihTertinggi');
-  }
-}
-
-void tanyakanMainLagi() {
-  print('\n' + '─' * 40);
-  stdout.write('🔄 Main lagi? (y/n): ');
-  String? jawaban = stdin.readLineSync()?.toLowerCase();
-
-  if (jawaban == 'y' || jawaban == 'ya') {
-    print('\n' * 3);
-    GameTebakAngka().main();
-  } else {
-    print('\n🙏 Terima kasih sudah bermain!');
-    print('👋 Sampai jumpa lagi!');
-  }
 }
