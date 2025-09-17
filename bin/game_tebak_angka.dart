@@ -17,6 +17,8 @@ class GameTebakAngka {
   }
 }
 
+void mainGame() {}
+
 void uiHeader() {
   print('╔══════════════════════════════════════════╗');
   print('║    GAME TEBAK ANGKA BIAR GAK BORING      ║');
@@ -75,4 +77,20 @@ void beriPetunjuk(int tebakan) {
   } else {
     print('💡 Dingin... masih jauh.');
   }
+}
+
+void tampilkanKemenangan() {
+  print('\n' + '=' * 50);
+  print('🎉 SELAMAT! Anda menang!');
+  print('💯 Angka rahasia: $angkaRahasia');
+  print('✅ Berhasil dalam $percobaan percobaan');
+  print('=' * 50);
+}
+
+void tampilkanKekalahan() {
+  print('\n' + '=' * 50);
+  print('😢 Sayang sekali! Anda kalah...');
+  print('🔢 Angka rahasia: $angkaRahasia');
+  print('💔 Percobaan habis: $maksPercobaan/$maksPercobaan');
+  print('=' * 50);
 }
